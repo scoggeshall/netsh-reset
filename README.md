@@ -1,4 +1,4 @@
-# Network Reset and Repair Tool
+# Network Reset Tool
 
 Version: 2.0  
 Author: scoggeshall  
@@ -8,29 +8,25 @@ License: MIT
 
 ## Overview
 
-This is an advanced Windows batch script that automates the process of resetting and repairing network settings. It uses built-in tools like `netsh`, `ipconfig`, `nbtstat`, `arp`, and `reg` to help restore internet connectivity, flush caches, reset firewalls, and more.
+This is a streamlined Windows batch script designed to quickly reset and repair essential network settings using built-in system tools. It flushes DNS, resets TCP/IP and Winsock, clears ARP and NetBIOS caches, resets firewall and proxy settings, and logs everything to a timestamped file.
 
 ---
 
 ## Features
 
-- Color-coded, interactive command-line interface
-- Logs all actions to a detailed timestamped file
-- Backs up current network configuration before making changes
-- Multiple reset options:
-  - Quick Reset (basic TCP/IP and Winsock reset)
-  - Full Reset (adds firewall and proxy reset)
-  - Advanced Reset (includes additional diagnostic and optimization steps)
-- Verifies connectivity and DNS before and after reset
-- Restarts critical networking services
-- Offers reboot prompt at the end
+- One-click full network reset
+- Automatically logs all actions and errors
+- Creates per-run log files with timestamp
+- Optionally prompts for system reboot
+- Minimal UI, no external dependencies
 
 ---
 
-## Files Created
+## Log File Location
 
-- Log File: `%UserProfile%\Desktop\NetworkResetLogs\NetworkReset_YYYY-MM-DD_HH-MM-SS.log`
-- Backup File: `%UserProfile%\Desktop\NetworkResetLogs\NetworkConfig_Backup_YYYY-MM-DD_HH-MM-SS.txt`
+- `%UserProfile%\Desktop\NetResetLogs\reset_YYYY-MM-DD_HH-MM.log`
+
+Includes details of every step and the full `ipconfig /all` output for reference.
 
 ---
 
@@ -43,28 +39,21 @@ This is an advanced Windows batch script that automates the process of resetting
 
 ## How to Use
 
-1. Right-click the script and select **"Run as administrator"**
-2. Choose one of the following options when prompted:
-   - [1] Quick Reset
-   - [2] Full Reset
-   - [3] Advanced Reset
-   - [4] Exit
-3. Confirm you want to proceed
-4. After the reset completes, choose whether to restart now or later
+1. Right-click the `.bat` file and choose **"Run as administrator"**
+2. Follow the on-screen instructions
+3. After the reset, choose whether to reboot now or later
 
 ---
 
-## Warning
+## What It Resets
 
-This script will reset and modify key network settings, including:
-
-- TCP/IP and IPv6 stacks
 - Winsock catalog
-- Windows Firewall settings
-- Proxy and DNS cache
-- Network location profiles
-
-Please back up any important configuration before running.
+- TCP/IP stack (IPv4 and IPv6)
+- DNS cache
+- ARP and NetBIOS name caches
+- Windows Firewall
+- Proxy settings (via `winhttp`)
+- Displays full adapter configuration afterward
 
 ---
 
@@ -76,5 +65,5 @@ This project is licensed under the MIT License.
 
 ## Support
 
-Check the generated log files for detailed info.  
-For issues or improvements, visit: https://github.com/scoggeshall/netsh-reset
+Check the log files for any errors or output.  
+For updates or improvements, visit: [https://github.com/scoggeshall/netsh-reset](https://github.com/scoggeshall/netsh-reset)
