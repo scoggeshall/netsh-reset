@@ -1,4 +1,4 @@
-# Advanced Network Reset and Repair Tool
+# Network Reset and Repair Tool
 
 Version: 2.0  
 Author: scoggeshall  
